@@ -1,0 +1,57 @@
+package com.example.ex924ucs115;
+
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button btnAlert;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btnAlert = findViewById(R.id.btnAlert1);
+
+        btnAlert.setOnClickListener(v -> {
+
+            AlertDialog.Builder builder =
+                    new AlertDialog.Builder(MainActivity.this);
+
+            builder.setTitle("ALERT");
+            builder.setMessage("Do you want to continue?");
+            builder.setCancelable(false);
+
+            // OK Button
+            builder.setPositiveButton("OK",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            Toast.makeText(MainActivity.this,
+                                    "You Pressed OK",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+            // CANCEL Button → Exit App
+            builder.setNegativeButton("Cancel",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            finish();   // closes the activity
+                        }
+                    });
+
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        });
+    }
+}
