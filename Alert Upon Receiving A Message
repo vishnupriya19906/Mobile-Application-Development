@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
             builder.setMessage("Do you want to continue?");
             builder.setCancelable(false);
 
-            // OK Button
             builder.setPositiveButton("OK",
                     new DialogInterface.OnClickListener() {
                         @Override
@@ -40,13 +39,12 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
 
-            // CANCEL Button → Exit App
             builder.setNegativeButton("Cancel",
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
-                            finish();   // closes the activity
+                            finish();  
                         }
                     });
 
